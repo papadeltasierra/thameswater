@@ -8,34 +8,31 @@ python:
 variables:
   PACKAGE_NAME: thameswater
 
+# Make sure that we install pylint and flake8
+#install: 
+#  - pip install -r requirements.txt
+
+.lint:
+  - pip install flake8 pylint
+  - flake8 $PACKAGE_NAME
+  - pylint $PACKAGE_NAME 
+
 script:
-  - lint
+  - <<: *lint
 #  - deploy
 
-.setup_lint: &setup_lint
-  image: python:3.6
-  before_script:
-    - pip install --upgrade pip --quiet
-
-lint:
-  <<: *setup_lint
-  stage: lint
-  script:
-    - pip install pycodestyle
-    - pycodestyle --first $PACKAGE_NAME
-
-security_lint:
-  <<: *setup_lint
-  stage: lint
-  script:
-    - pip install bandit
-    - mkdir -p output/bandit_logs
-    - bandit -a file -r . -f html -ll -o output/bandit_logs/report_medium_high.html
-  artifacts:
-    when: on_failure
-    paths:
-      - output/bandit_logs
-    expire_in: 1 day
+#security_lint:
+#  <<: *setup_lint
+#  stage: lint
+#  script:
+#    - pip install bandit
+#    - mkdir -p output/bandit_logs
+#    - bandit -a file -r . -f html -ll -o output/bandit_logs/report_medium_high.html
+#  artifacts:
+#    when: on_failure
+#    paths:
+#      - output/bandit_logs
+#    expire_in: 1 day
 
 #deploy:
 #  image: python:3.6
