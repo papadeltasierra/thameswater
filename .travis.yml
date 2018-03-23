@@ -1,0 +1,46 @@
+variables:
+  PACKAGE_NAME: thameswater
+
+stages:
+  - lint
+#  - deploy
+
+.setup_lint: &setup_lint
+  image: python:3.6
+  before_script:
+    - pip install --upgrade pip --quiet
+
+lint:
+  <<: *setup_lint
+  stage: lint
+  script:
+    - pip install pycodestyle
+    - pycodestyle --first $PACKAGE_NAME
+
+security_lint:
+  <<: *setup_lint
+  stage: lint
+  script:
+    - pip install bandit
+    - mkdir -p output/bandit_logs
+    - bandit -a file -r . -f html -ll -o output/bandit_logs/report_medium_high.html
+  artifacts:
+    when: on_failure
+    paths:
+      - output/bandit_logs
+    expire_in: 1 day
+
+#deploy:
+#  image: python:3.6
+#  stage: deploy
+#  environment:
+#    name: production
+#  script:
+#    - pip install --upgrade pip --quiet
+#    - pip install setuptools wheel --quiet
+#    - python setup.py sdist bdist_wheel upload
+#  when: manual
+#  only:
+#    - /^v?\d+\.\d+\.\d+([abc]\d*)?$/
+#  except:
+#    - branches
