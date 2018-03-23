@@ -1,7 +1,9 @@
-===========
-thameswater
-===========
+====================
+thameswater |builds|
+====================
 Disclaimer: I have no connection to `Thames Water`_ at all (other than a water supply and sewage pipe ;-) ) and this is a utility that I wrote because I was frustrated that I could not download this information directly from the website.
+
+
 
 What It Does
 ------------
@@ -71,3 +73,4 @@ At the time of writing you will see some logging appearing on screen; I've not y
 .. _Venv: https://docs.python.org/3/library/venv.html
 .. _Python3: https://www.python.org/downloads/
 .. _Python2: Python3_
+.. |builds| image:: https://travis-ci.org/papadeltasierra/thameswater.svg?branch=master
