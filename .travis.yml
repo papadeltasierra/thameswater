@@ -1,12 +1,14 @@
+# thameswater is written in Python...
 language: python
 
+# and we're only going to validate against Python 3.6
 python:
   - "3.6"
 
 variables:
   PACKAGE_NAME: thameswater
 
-stages:
+script:
   - lint
 #  - deploy
 
