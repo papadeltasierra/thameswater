@@ -16,7 +16,7 @@ python:
 script:
   - pip install flake8 pylint
   - flake8 thameswater
-  - pylint thameswater
+  - pylint thameswater.py
 #  - deploy
 
 #security_lint:
