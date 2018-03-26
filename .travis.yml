@@ -14,9 +14,9 @@ python:
 #  - pip install -r requirements.txt
 
 script:
-  - pip install flake8 pylint
+  # - pip install flake8 pylint
   - flake8 thameswater
-  - pylint thameswater.py
+  - pylint thameswater/thameswater.py
 #  - deploy
 
 #security_lint:
