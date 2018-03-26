@@ -5,23 +5,18 @@ language: python
 python:
   - "3.6"
 
-variables:
-  PACKAGE_NAME: thameswater
+#variables:
+#  PACKAGE_NAME: thameswater
   
 
 # Make sure that we install pylint and flake8
 #install: 
 #  - pip install -r requirements.txt
 
-.lint:
+script:
   - pip install flake8 pylint
   - flake8 thameswater
   - pylint thameswater
-#  - flake8 $PACKAGE_NAME
-#  - pylint $PACKAGE_NAME 
-
-script:
-  - <<: *lint
 #  - deploy
 
 #security_lint:
