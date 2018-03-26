@@ -1,4 +1,3 @@
-thameswater
 selenium
 pylint
 flake8
