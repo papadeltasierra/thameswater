@@ -15,8 +15,10 @@ variables:
 
 .lint:
   - pip install flake8 pylint
-  - flake8 $PACKAGE_NAME
-  - pylint $PACKAGE_NAME 
+  - flake8 thameswater
+  - pylint thameswater
+#  - flake8 $PACKAGE_NAME
+#  - pylint $PACKAGE_NAME 
 
 script:
   - <<: *lint
