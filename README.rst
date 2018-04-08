@@ -63,8 +63,8 @@ Why Chrome?
 Debugging/Logging
 -----------------
 At the time of writing you will see the following log appearing on screen:
-
 ::
+
   DevTools listening on ws://127.0.0.1...
 
 There does not appear to be a way to suppress this at present but if you find one, please let me know.
