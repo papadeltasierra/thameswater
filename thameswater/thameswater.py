@@ -49,6 +49,8 @@ class ThamesWater:
         options = webdriver.ChromeOptions()
         if headless:
             options.add_argument('--headless')
+            options.add_argument('--disable-gpu')
+            options.add_argument("--log-level=3")  # fatal
 
         self.web_driver = webdriver.Chrome(
             browser_driver, chrome_options=options)
@@ -128,7 +130,7 @@ class ThamesWater:
 
         # Now that we have go here, we can download the daily usage figures as
         # a JSON file (confusingly called an XML file!).
-        print('Downloading daily data file...')
+        print('Downloading daily data file: \'%s\'...' % data_filename)
         self.web_driver.get(data_filename)
 
         # Hurrah - the body is the daily data encoded as JSON.

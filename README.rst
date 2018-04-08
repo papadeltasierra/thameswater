@@ -62,7 +62,12 @@ Why Chrome?
 
 Debugging/Logging
 -----------------
-At the time of writing you will see some logging appearing on screen; I've not yet managed to figure out how to suppress this - if you know how, please let me know!
+At the time of writing you will see the following log appearing on screen:
+
+::
+  DevTools listening on ws://127.0.0.1...
+
+There does not appear to be a way to suppress this at present but if you find one, please let me know.
 
 .. _Thames Water: https://www.thameswater.co.uk
 .. _`Chrome browser`: https://www.google.com/chrome/
