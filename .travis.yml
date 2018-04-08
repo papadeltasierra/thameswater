@@ -19,6 +19,12 @@ script:
   - pylint thameswater/thameswater.py
 #  - deploy
 
+deploy:
+  provider: pypi
+  user: "papadeltasierra"
+  password:
+    secure: "TQIavIY2rBgYPMfPnnAzSqK9gvwxrPEM75nF1gE0JmqZY/E/vvH3gh/3hDP/4kZA13kQzoSny+PhMbe9uDPFuJVSqpGL4dghCMqR86rOs3JecKmHKTfUEPdQRTDih+kbpgVNWSjJ3FW3uC7SJgno7gYVzcuWbPGF/eDlT/zzOqIfwCc/AamLVsD+lgWK/zBO617TAHqFuikZAHUh5/ZNWRYx13rPs/7fw0WCa4o39CX8oYGOmJprdH7DoRAvxKPi43Aj86n5cUy95K0DFaAP3+3qqv9ZNfVguHFOySKzlbMtlM0dkeQmDH/2M+1w4wjOP8U9iOE56G6pdb719g/9cygsaKNH8qqyhlavtg/AoKfh1SULTXrsRUIlG2KypTqesYbbjc0VLOUUzYEuCtngrBJI6dwbNJjKEVGPGL+ZozxveWwXNyx1ISY99hK3g2DFxUONDpLsgXPNZukq9e/Tc4eDgxCCF1KV1MjZxi2dWXjDorRmyE/ApvwZcf7/xjPHtImF+FDAPp4d71zruyD+P6x3Xn0x4Ekl0IleBZQhTdgtviA2gk72YWWdX9iOlQA30JJ4k/P09KUGhU6m8QRt7O3oswuVZV2moZtAsIO9E9Q2RdGT1lVfLPyqu2+Kk3uT6AzsokeEcXDSexzQCITbnSHO5rMUROWkPzaOh8bIG7g="
+
 #security_lint:
 #  <<: *setup_lint
 #  stage: lint
