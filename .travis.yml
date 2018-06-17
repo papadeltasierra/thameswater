@@ -21,7 +21,7 @@ script:
 
 deploy:
   on:
-    branch: '0.2'
+    branch: 0.2
     python: '3.6'
   provider: pypi
   user: "papadeltasierra"
