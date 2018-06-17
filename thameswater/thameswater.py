@@ -15,7 +15,7 @@ from selenium import webdriver
 # The CSV we create will contain these fields; the last three are from the
 # downloaded JSON but the first we create from less useful date fields.
 DAILY_FIELD_NAMES = [
-    "Date", "Consumption", "CumulativeConsumption", "Meterread"]
+    "Date", "Consumption", "CumulativeConsumption", "MeterRead"]
 
 # These fields exist into the JSON data, Day as '12-Sep' and Month as '09'.
 DAY = 'Day'

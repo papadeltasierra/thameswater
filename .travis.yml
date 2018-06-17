@@ -20,11 +20,13 @@ script:
 #  - deploy
 
 deploy:
+  on:
+    branch: '0.0.2'
+    python: '3.6'
   provider: pypi
   user: "papadeltasierra"
   password:
-    secure: "TQIavIY2rBgYPMfPnnAzSqK9gvwxrPEM75nF1gE0JmqZY/E/vvH3gh/3hDP/4kZA13kQzoSny+PhMbe9uDPFuJVSqpGL4dghCMqR86rOs3JecKmHKTfUEPdQRTDih+kbpgVNWSjJ3FW3uC7SJgno7gYVzcuWbPGF/eDlT/zzOqIfwCc/AamLVsD+lgWK/zBO617TAHqFuikZAHUh5/ZNWRYx13rPs/7fw0WCa4o39CX8oYGOmJprdH7DoRAvxKPi43Aj86n5cUy95K0DFaAP3+3qqv9ZNfVguHFOySKzlbMtlM0dkeQmDH/2M+1w4wjOP8U9iOE56G6pdb719g/9cygsaKNH8qqyhlavtg/AoKfh1SULTXrsRUIlG2KypTqesYbbjc0VLOUUzYEuCtngrBJI6dwbNJjKEVGPGL+ZozxveWwXNyx1ISY99hK3g2DFxUONDpLsgXPNZukq9e/Tc4eDgxCCF1KV1MjZxi2dWXjDorRmyE/ApvwZcf7/xjPHtImF+FDAPp4d71zruyD+P6x3Xn0x4Ekl0IleBZQhTdgtviA2gk72YWWdX9iOlQA30JJ4k/P09KUGhU6m8QRt7O3oswuVZV2moZtAsIO9E9Q2RdGT1lVfLPyqu2+Kk3uT6AzsokeEcXDSexzQCITbnSHO5rMUROWkPzaOh8bIG7g="
-
+    secure: "e7AjBloTdeJyLsxMIvElCuzX+goD7TBDNwezodNRWmtYvIuEbD4tXJ2sfN6jfwya9Dv82Oskyno2ctmiqRNOWr8/7P7u9/499xrZCAtJbXIwNkMXSK4EfWjmuEvlWXBQgAQsWf1wKwdY3SMsd1R0s4Ysj7go9LTUjvVyrkWW/b2bCVdlZj5/zVdixE+YvfWcmRfUkI36HyrF8Uuwbp70upQF8QwncJU4NWak8KcanodCm9Mu9TOLbtpdk68STE0YGB4OwdzZT65D5xLeEroZXdNfuWrKEuvL8FuOAflxQoXfMBd4kNHUyxi38VHZvq/FK/DBE17MgZm7giYbrOrddc0BgyAaBEwuI4jjuPkUUvFMrOuaYb/pOvnUE2jPh2YtoK6JrzXhzTZv+Pzwo8/Bxy//VvkdVt0JzT5+/werdJhDQOSRZOHL6jtS5Wmq87z0joxX0H2AItumNo9N+YeBOQMSwLuO/ZiQyykL5eFv+kz6PkqEos1cffdI5huWmRlaNMxKgJi/zZ2a3YZ/rNKUK/GZSZbCVKhlIW4i7H86DD1kfCbzQab4jZdpZjPqObGSx+qQK/BHyznaU5EOx3cbdOaXu4bA7snEdUMprHSeogjkrC4n2y6nWB3NtwHPEol5HTFr0AVG+wXcO/oJCZwAw7Cbesx3ZaKejs1Tkj1IFas="
 #security_lint:
 #  <<: *setup_lint
 #  stage: lint
