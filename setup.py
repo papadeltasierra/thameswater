@@ -6,7 +6,7 @@ def readme():
 
 setup(
     name='thameswater',
-    version='0.1',
+    version='0.2',
     long_description=readme(),
     description='An application for dowloading daily water usage data from thames Water (UK).',
     author='Paul D.Smith',
