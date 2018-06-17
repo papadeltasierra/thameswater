@@ -24,6 +24,9 @@ deploy:
     branch: 0.2
     python: '3.6'
   provider: pypi
+  # Work around current PyPi/Travis issues.
+  edge:
+    branch: v1.8.45
   user: "papadeltasierra"
   password:
     secure: "e7AjBloTdeJyLsxMIvElCuzX+goD7TBDNwezodNRWmtYvIuEbD4tXJ2sfN6jfwya9Dv82Oskyno2ctmiqRNOWr8/7P7u9/499xrZCAtJbXIwNkMXSK4EfWjmuEvlWXBQgAQsWf1wKwdY3SMsd1R0s4Ysj7go9LTUjvVyrkWW/b2bCVdlZj5/zVdixE+YvfWcmRfUkI36HyrF8Uuwbp70upQF8QwncJU4NWak8KcanodCm9Mu9TOLbtpdk68STE0YGB4OwdzZT65D5xLeEroZXdNfuWrKEuvL8FuOAflxQoXfMBd4kNHUyxi38VHZvq/FK/DBE17MgZm7giYbrOrddc0BgyAaBEwuI4jjuPkUUvFMrOuaYb/pOvnUE2jPh2YtoK6JrzXhzTZv+Pzwo8/Bxy//VvkdVt0JzT5+/werdJhDQOSRZOHL6jtS5Wmq87z0joxX0H2AItumNo9N+YeBOQMSwLuO/ZiQyykL5eFv+kz6PkqEos1cffdI5huWmRlaNMxKgJi/zZ2a3YZ/rNKUK/GZSZbCVKhlIW4i7H86DD1kfCbzQab4jZdpZjPqObGSx+qQK/BHyznaU5EOx3cbdOaXu4bA7snEdUMprHSeogjkrC4n2y6nWB3NtwHPEol5HTFr0AVG+wXcO/oJCZwAw7Cbesx3ZaKejs1Tkj1IFas="
