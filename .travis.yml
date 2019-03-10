@@ -1,56 +1,14 @@
-# thameswater is written in Python...
 language: python
-
-# and we're only going to validate against Python 3.6
 python:
-  - "3.6"
-
-#variables:
-#  PACKAGE_NAME: thameswater
-  
-
-# Make sure that we install pylint and flake8
-#install: 
-#  - pip install -r requirements.txt
-
+- '3.6'
 script:
-  # - pip install flake8 pylint
-  - flake8 thameswater
-  - pylint thameswater/thameswater.py
-#  - deploy
-
+- flake8 thameswater
+- pylint thameswater/thameswater.py
 deploy:
   on:
-    branch: '0.0.2'
+    branch: 0.0.2
     python: '3.6'
   provider: pypi
-  user: "papadeltasierra"
+  user: papadeltasierra
   password:
-    secure: "e7AjBloTdeJyLsxMIvElCuzX+goD7TBDNwezodNRWmtYvIuEbD4tXJ2sfN6jfwya9Dv82Oskyno2ctmiqRNOWr8/7P7u9/499xrZCAtJbXIwNkMXSK4EfWjmuEvlWXBQgAQsWf1wKwdY3SMsd1R0s4Ysj7go9LTUjvVyrkWW/b2bCVdlZj5/zVdixE+YvfWcmRfUkI36HyrF8Uuwbp70upQF8QwncJU4NWak8KcanodCm9Mu9TOLbtpdk68STE0YGB4OwdzZT65D5xLeEroZXdNfuWrKEuvL8FuOAflxQoXfMBd4kNHUyxi38VHZvq/FK/DBE17MgZm7giYbrOrddc0BgyAaBEwuI4jjuPkUUvFMrOuaYb/pOvnUE2jPh2YtoK6JrzXhzTZv+Pzwo8/Bxy//VvkdVt0JzT5+/werdJhDQOSRZOHL6jtS5Wmq87z0joxX0H2AItumNo9N+YeBOQMSwLuO/ZiQyykL5eFv+kz6PkqEos1cffdI5huWmRlaNMxKgJi/zZ2a3YZ/rNKUK/GZSZbCVKhlIW4i7H86DD1kfCbzQab4jZdpZjPqObGSx+qQK/BHyznaU5EOx3cbdOaXu4bA7snEdUMprHSeogjkrC4n2y6nWB3NtwHPEol5HTFr0AVG+wXcO/oJCZwAw7Cbesx3ZaKejs1Tkj1IFas="
-#security_lint:
-#  <<: *setup_lint
-#  stage: lint
-#  script:
-#    - pip install bandit
-#    - mkdir -p output/bandit_logs
-#    - bandit -a file -r . -f html -ll -o output/bandit_logs/report_medium_high.html
-#  artifacts:
-#    when: on_failure
-#    paths:
-#      - output/bandit_logs
-#    expire_in: 1 day
-
-#deploy:
-#  image: python:3.6
-#  stage: deploy
-#  environment:
-#    name: production
-#  script:
-#    - pip install --upgrade pip --quiet
-#    - pip install setuptools wheel --quiet
-#    - python setup.py sdist bdist_wheel upload
-#  when: manual
-#  only:
-#    - /^v?\d+\.\d+\.\d+([abc]\d*)?$/
-#  except:
-#    - branches
+    secure: J0eju2Vy/NCC75cjGtGpaG4jtahl3n6ZbrylyC5ZJt+SfWcQZGzNjlT+VVXya4Z+hsoPpy8PpPJzmSAE2DdXTYjcBmvWTwwpzzbGaCyhE6+LwP91WP6EHV5VAN0EbyQHByu15tok/ytGASkBdrX3t4sh55z5TUf0gfbramTDTBxQ6gea3JuvoiWMUV2tMVRzUY4X3leaQljZDmAE0h9V6RxTsp0xZaU7jg8KJ6Oa0CBS5n+UTU/L5u0KEXFKHQQIAwl/d2UcGbUXCAsqe0Ls5lUMSVd5S9uVFRT6PND7nDOuVxZ8RHEI3kPaayOgQfPJyDYg+4q/r1luWlPlW5BYAYUWc70SMW5AbXxw4uwF7fmxm1Wi3PoRF13Wk8tR87ZvgRmLd/0OVdldrO70YUxlNpOwcfexUp6nHY81uBmE2w69p2E9ALH05Gwk8TlqZsbdA5KYyDSYez5aZ6IanNCinlVyeKbKxUowsdQHrl3jGxv6knpz6aGkLfm6mqB7vLNbxc9a42iPNJPBFBeaWwQbCMbM8r+drrYxxq04IxnjJ9Yi9aCa9BJ0Hl7MF8fep/AFhClx2mVy5BpJ7nKNOMWM2ggmlDQtAuMfkYdIxo4r+TkvUtM12ex2StUV+K6BMXG2vgkApAyaGsG+eMmH8DKzhPc6nruPjS4KmojoWAwqUMI=
