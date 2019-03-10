@@ -10,7 +10,9 @@ import re
 import time
 from datetime import datetime, date
 from selenium import webdriver
-
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
 
 # The CSV we create will contain these fields; the last three are from the
 # downloaded JSON but the first we create from less useful date fields.
@@ -29,12 +31,14 @@ class ThamesWater:
     """ A class for reading daily usage information from the thames Water
         website. """
 
-    THAMES_WATER_WEBSITE = 'https://www.thameswater.co.uk'
+    THAMES_WATER_LOGIN = 'https://www.thameswater.co.uk/login'
     # We cannot search for the Log In' text because of ::before and
     # ::after markers.
-    LOGIN_PAGE = """//*[@id="tab-log-in"]"""
-    INPUT_EMAIL = """//input[@placeholder='Enter email address here']"""
-    INPUT_PASSWORD = """//input[@placeholder='Enter password here']"""
+    INPUT_EMAIL = """//input[@name="login-login"]"""
+    INPUT_PASSWORD = """//input[@placeholder="Enter password here"]"""
+
+    # Yes, there really are 12 leading spaces!
+    NEXT_BUTTON = """//input[@value='            Next']"""
     LOGIN_BUTTON = """//input[@value='Log in']"""
     VIEW_ACCOUNT = """//input[@title='View account']"""
     MY_USAGE = """//a[contains(., 'My usage')]"""
@@ -63,21 +67,16 @@ class ThamesWater:
         print('Logging into Thames Water website...')
 
         # Start at the home page.
-        self.web_driver.get(self.THAMES_WATER_WEBSITE)
+        self.web_driver.get(self.THAMES_WATER_LOGIN)
 
-        # Click on Log-In
-        self.web_driver.find_element_by_xpath(self.LOGIN_PAGE).click()
+        wait = WebDriverWait(self.web_driver, 30)
+        wait.until(EC.presence_of_element_located(
+            (By.XPATH, self.INPUT_EMAIL)))
 
-        # Website opens a new tab so close the old tab and switch to the new
-        # one.
-        self.web_driver.close()
-        self.web_driver.switch_to.window(self.web_driver.window_handles[-1])
-
-        # Enter the username and password and press 'Log-In'
-        self.web_driver.find_element_by_xpath(
-            self.INPUT_EMAIL).send_keys(username)
-        self.web_driver.find_element_by_xpath(
-            self.INPUT_PASSWORD).send_keys(password)
+        self.web_driver.find_element_by_xpath(self.INPUT_EMAIL).send_keys(
+            username)
+        self.web_driver.find_element_by_xpath(self.INPUT_PASSWORD).send_keys(
+            password)
         self.web_driver.find_element_by_xpath(self.LOGIN_BUTTON).click()
 
     def read(self):
