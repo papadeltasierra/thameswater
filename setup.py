@@ -6,7 +6,7 @@ def readme():
 
 setup(
     name='thameswater',
-    version='0.1',
+    version='0.3',
     long_description=readme(),
     description='An application for dowloading daily water usage data from thames Water (UK).',
     author='Paul D.Smith',
@@ -14,7 +14,7 @@ setup(
     url='https://github.com/papadeltasierrra/thameswater',
     packages=['thameswater'],
     install_requires=[
-        'selenium'        
+        'selenium'
     ],
     entry_points = {
         'console_scripts': ['thameswater=thameswater.thameswater:main'],

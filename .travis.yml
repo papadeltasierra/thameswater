@@ -7,10 +7,10 @@ python:
 
 #variables:
 #  PACKAGE_NAME: thameswater
-  
+
 
 # Make sure that we install pylint and flake8
-#install: 
+#install:
 #  - pip install -r requirements.txt
 
 script:
@@ -21,7 +21,7 @@ script:
 
 deploy:
   on:
-    branch: '0.0.2'
+    branch: '0.3'
     python: '3.6'
   provider: pypi
   user: "papadeltasierra"
