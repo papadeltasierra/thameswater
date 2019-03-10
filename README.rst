@@ -13,9 +13,9 @@ Under the covers the utility uses the `Chrome browser`_ to surf the `Thames Wate
 
 Installation
 ------------
-You will need both the `Chrome browser`_ and the `ChromeDriver - WebDriver for Chrome`_.  The `ChromeDriver - WebDriver for Chrome`_ allows this Python application to drive the Chrome browser just as if you were sat their typing and clicking links – you can sit and watch this happen if you like by not running this script ‘headless’.
+You will need both the `Chrome browser`_ and the `ChromeDriver - WebDriver for Chrome`_.  The `ChromeDriver - WebDriver for Chrome`_ allows this Python application to drive the Chrome browser just as if you were sat their typing and clicking links – you can sit and watch this happen if you like by not running this script 'headless'.
 
-So install the `Chrome browser`_ if you haven’t already and then copy the `ChromeDriver - WebDriver for Chrome`_ to somewhere on your system before installing this utility.
+So install the `Chrome browser`_ if you haven't already and then copy the `ChromeDriver - WebDriver for Chrome`_ to somewhere on your system before installing this utility.
 
 It is recommended that you install the utility into either Virtualenv_ or Venv_ environment and you must use Python3_ not Python2_.  Once the environment is created, the following should install this utility:
 ::
@@ -57,8 +57,8 @@ It turns out that in order to show the daily bar charts, the `Thames Water`_ web
 
 Why Chrome?
 -----------
-* It’s the browser that I normally use; the code might well work with Firefox and the Firefox driver or perhaps even Edge or other browsers, providing a suitable Selenium driver is available.
-* Chrome can be run in ‘headless’ mode which is nice if you don’t want a browser to launch onto your desktop just to download these figures.
+* It's the browser that I normally use; the code might well work with Firefox and the Firefox driver or perhaps even Edge or other browsers, providing a suitable Selenium driver is available.
+* Chrome can be run in 'headless' mode which is nice if you don't want a browser to launch onto your desktop just to download these figures.
 
 Debugging/Logging
 -----------------
