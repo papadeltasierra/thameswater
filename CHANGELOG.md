@@ -10,6 +10,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 - Nothing
 
+## [0.4]
+### Changed
+- Correct minor typos and README formatting.
+
 ## [0.3]
 ### Changed
 - Thames Water website changed around March 2019; script altered to follow
@@ -25,6 +29,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - First release
 
 [Unreleased]: https://github.com/papadeltasierra/thameswater/compare/0.1...HEAD
-[0.3]: https://github.com/papadeltasierra/thameswater/0.2
+[0.4]: https://github.com/papadeltasierra/thameswater/0.4
+[0.3]: https://github.com/papadeltasierra/thameswater/0.3
 [0.2]: https://github.com/papadeltasierra/thameswater/0.2
 [0.1]: https://github.com/papadeltasierra/thameswater/0.1
