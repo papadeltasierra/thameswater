@@ -34,15 +34,17 @@ class ThamesWater:
     THAMES_WATER_LOGIN = 'https://www.thameswater.co.uk/login'
     # We cannot search for the Log In' text because of ::before and
     # ::after markers.
-    INPUT_EMAIL = """//input[@name="login-login"]"""
+    INPUT_EMAIL = """//div[@class="fieldset"]/input"""
     INPUT_PASSWORD = """//input[@placeholder="Enter password here"]"""
 
     # Yes, there really are 12 leading spaces!
-    NEXT_BUTTON = """//input[@value='            Next']"""
+    NEXT_BUTTON = """//a[@class="btn btn-tw-secondary"]"""
     LOGIN_BUTTON = """//input[@value='Log in']"""
     VIEW_ACCOUNT = """//input[@title='View account']"""
     MY_USAGE = """//a[contains(., 'My usage')]"""
     DAILY_USAGE = """//a[contains(., 'View your daily usage here')]"""
+
+    DEBUG_BODY = """//body"""
 
     TIMING_NAME = 'name'
     DAILYDATA = 'dailydata'
@@ -64,17 +66,22 @@ class ThamesWater:
     def login(self, username, password):
         """ Bring up the log-in screen and log us in. """
 
-        print('Logging into Thames Water website...')
-
         # Start at the home page.
         self.web_driver.get(self.THAMES_WATER_LOGIN)
-
         wait = WebDriverWait(self.web_driver, 30)
+        wait.until(EC.presence_of_element_located(
+            (By.XPATH, self.DEBUG_BODY)))
         wait.until(EC.presence_of_element_located(
             (By.XPATH, self.INPUT_EMAIL)))
 
         self.web_driver.find_element_by_xpath(self.INPUT_EMAIL).send_keys(
             username)
+        self.web_driver.find_element_by_xpath(self.NEXT_BUTTON).click()
+
+        wait = WebDriverWait(self.web_driver, 30)
+        wait.until(EC.presence_of_element_located(
+            (By.XPATH, self.INPUT_PASSWORD)))
+
         self.web_driver.find_element_by_xpath(self.INPUT_PASSWORD).send_keys(
             password)
         self.web_driver.find_element_by_xpath(self.LOGIN_BUTTON).click()

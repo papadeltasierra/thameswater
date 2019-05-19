@@ -13,7 +13,7 @@ Under the covers the utility uses the `Chrome browser`_ to surf the `Thames Wate
 
 Installation
 ------------
-You will need both the `Chrome browser`_ and the `ChromeDriver - WebDriver for Chrome`_.  The `ChromeDriver - WebDriver for Chrome`_ allows this Python application to drive the Chrome browser just as if you were sat their typing and clicking links – you can sit and watch this happen if you like by not running this script 'headless'.
+You will need both the `Chrome browser`_ and the `ChromeDriver - WebDriver for Chrome`_.  The `ChromeDriver - WebDriver for Chrome`_ allows this Python application to drive the Chrome browser just as if you were sat their typing and clicking links \– you can sit and watch this happen if you like by not running this script 'headless'.
 
 So install the `Chrome browser`_ if you haven't already and then copy the `ChromeDriver - WebDriver for Chrome`_ to somewhere on your system before installing this utility.
 
