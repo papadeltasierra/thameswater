@@ -3,7 +3,9 @@ thameswater |builds|
 ====================
 Disclaimer: I have no connection to `Thames Water`_ at all (other than a water supply and sewage pipe ;-) ) and this is a utility that I wrote because I was frustrated that I could not download this information directly from the website.
 
-
+> **NOTE** Thames Water do not provide a nice API to allow downloading of this data so this tool _screen-scapes_, i.e it pretends to be a user on the website and just happens to _catch_ a file that gets downloaded from Thames Water's servers to their code running on your browser.
+>
+> Unfortunately Thames Water keep changing their website and that breaks this tool.  I'm afriad I don't have time to maintain this at present so please just treat this as some useful code that you might be able to fork and get going with whatever Thames Water's website looks like _now_.
 
 What It Does
 ------------
