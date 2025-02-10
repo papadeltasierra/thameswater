@@ -13,6 +13,9 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.chrome.service import Service
+import logging
+import tempfile
 
 # The CSV we create will contain these fields; the last three are from the
 # downloaded JSON but the first we create from less useful date fields.
@@ -25,6 +28,8 @@ MONTH = 'Month'
 
 # We prefer to write out standard dates such as 2017/09/12
 DATE = 'Date'
+
+log = logging.getLogger(None)
 
 
 class ThamesWater:
@@ -51,12 +56,16 @@ class ThamesWater:
 
     def __init__(self, browser_driver, headless):
 
-        print('Initializing browser...')
+        log.debug('Initializing browser...')
         options = webdriver.ChromeOptions()
         if headless:
             options.add_argument('--headless')
             options.add_argument('--disable-gpu')
             options.add_argument("--log-level=3")  # fatal
+
+        # Create a temporary directory for user data
+        user_data_dir = tempfile.mkdtemp()
+        options.add_argument(f'--user-data-dir={user_data_dir}')
 
         service = Service(browser_driver)
         self.web_driver = webdriver.Chrome(service=service, options=options)
@@ -67,6 +76,7 @@ class ThamesWater:
         """ Bring up the log-in screen and log us in. """
 
         # Start at the home page.
+        log.debug("Logging-in to Thames Water website...")
         self.web_driver.get(self.THAMES_WATER_LOGIN)
         wait = WebDriverWait(self.web_driver, 30)
         wait.until(EC.presence_of_element_located(
@@ -74,10 +84,12 @@ class ThamesWater:
         wait.until(EC.presence_of_element_located(
             (By.XPATH, self.INPUT_EMAIL)))
 
+        log.debug("Finding the username field and entering...")
         self.web_driver.find_element(By.XPATH, self.INPUT_EMAIL).send_keys(
             username)
         self.web_driver.find_element(By.XPATH, self.NEXT_BUTTON).click()
 
+        log.debug("Finding the password field and entering...")
         wait = WebDriverWait(self.web_driver, 30)
         wait.until(EC.presence_of_element_located(
             (By.XPATH, self.INPUT_PASSWORD)))
@@ -92,13 +104,16 @@ class ThamesWater:
         print('Traversing website to get to daily usage data...')
 
         # Click the 'View account' button.
+        log.debug("Clicking the 'View account' button...")
         self.web_driver.find_element(By.XPATH, self.VIEW_ACCOUNT).click()
 
         # Click the 'My usage' href.
+        log.debug("Clicking the 'My usage' link...")
         self.web_driver.find_element(By.XPATH, self.MY_USAGE).click()
 
         # Click the 'View your daily usage here' href
         # Search for href with text == 'View your daily usage here'
+        log.debug("Clicking the 'View your daily usage here' link...")
         self.web_driver.find_element_by_xpath(self.DAILY_USAGE).click()
 
         # We want the 'daily' file so we need to wait for it to have been
@@ -108,6 +123,7 @@ class ThamesWater:
         rgx_daily = re.compile('.*Daily.xml')
 
         print("Waiting for daily usage data.", end='', flush=True)
+        log.debug("Waiting for daily usage data.")
         while wait_interval:
             wait_interval = wait_interval - 1
 
@@ -137,6 +153,7 @@ class ThamesWater:
         # Now that we have go here, we can download the daily usage figures as
         # a JSON file (confusingly called an XML file!).
         print('Downloading daily data file: \'%s\'...' % data_filename)
+        log.debug("Downloading daily data file: '%s'..." % data_filename)
         self.web_driver.get(data_filename)
 
         # Hurrah - the body is the daily data encoded as JSON.
@@ -209,6 +226,14 @@ def main():
         is as a CSV file. """
     # Parse command line arguments
     args = parser().parse_args()
+
+    # for handlerName in log.getHandlerNames():
+    #     handler = log.getHandlerByName(handlerName)
+    #     handler.setLevel(logging.DEBUG)
+
+    logging.basicConfig(level=logging.DEBUG)
+    # log.setLevel(logging.DEBUG)
+    log.debug("Parameters read: %s", args)
 
     # if True:
     try:
