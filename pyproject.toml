@@ -1,0 +1,17 @@
+[project]
+name = "thameswater"
+version = "0.1.0"
+description = "A tool that screen-scrapes Thames Water water usage data."
+authors = [
+    {name = "Paul D.Smith",email = "paul_d_smith@hotmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "selenium (>=4.28.1,<5.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=3.9"]
+build-backend = "poetry.core.masonry.api"
