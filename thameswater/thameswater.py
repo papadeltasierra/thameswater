@@ -58,8 +58,8 @@ class ThamesWater:
             options.add_argument('--disable-gpu')
             options.add_argument("--log-level=3")  # fatal
 
-        self.web_driver = webdriver.Chrome(
-            browser_driver, chrome_options=options)
+        service = Service(browser_driver)
+        self.web_driver = webdriver.Chrome(service=service, options=options)
         if not self.web_driver:
             raise Exception("Unable to launch Chrome driver")
 
@@ -74,9 +74,9 @@ class ThamesWater:
         wait.until(EC.presence_of_element_located(
             (By.XPATH, self.INPUT_EMAIL)))
 
-        self.web_driver.find_element_by_xpath(self.INPUT_EMAIL).send_keys(
+        self.web_driver.find_element(By.XPATH, self.INPUT_EMAIL).send_keys(
             username)
-        self.web_driver.find_element_by_xpath(self.NEXT_BUTTON).click()
+        self.web_driver.find_element(By.XPATH, self.NEXT_BUTTON).click()
 
         wait = WebDriverWait(self.web_driver, 30)
         wait.until(EC.presence_of_element_located(
@@ -92,10 +92,10 @@ class ThamesWater:
         print('Traversing website to get to daily usage data...')
 
         # Click the 'View account' button.
-        self.web_driver.find_element_by_xpath(self.VIEW_ACCOUNT).click()
+        self.web_driver.find_element(By.XPATH, self.VIEW_ACCOUNT).click()
 
         # Click the 'My usage' href.
-        self.web_driver.find_element_by_xpath(self.MY_USAGE).click()
+        self.web_driver.find_element(By.XPATH, self.MY_USAGE).click()
 
         # Click the 'View your daily usage here' href
         # Search for href with text == 'View your daily usage here'
@@ -141,7 +141,7 @@ class ThamesWater:
 
         # Hurrah - the body is the daily data encoded as JSON.
         daily_data = json.loads(
-            self.web_driver.find_element_by_tag_name("body").text)
+            self.web_driver.find_element(By.TAG_NAME, "body").text)
         return daily_data[self.DAILYDATA]
 
     def quit(self):
