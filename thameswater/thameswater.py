@@ -65,7 +65,7 @@ class ThamesWater:
 
         # Create a temporary directory for user data
         user_data_dir = tempfile.mkdtemp()
-        options.add_argument(f'--user-data-dir={user_data_dir}')
+        options.add_argument('--user-data-dir=/tmp/noddy')
 
         service = Service(browser_driver)
         self.web_driver = webdriver.Chrome(service=service, options=options)
